@@ -2,14 +2,14 @@
 #set -e
 # Clone kernel
 echo -e "$green << cloning kernel >> \n $white"
-git clone --depth=1 https://github.com/Sweet-stuff/kernel_xiaomi_sweet 13
+git clone --depth=1 https://github.com/omnitrix21/kernel_xiaomi_sm6150 13
 cd 13
 
-KERNEL_DEFCONFIG=vendor/sweet_user_defconfig
+KERNEL_DEFCONFIG=sweet_defconfig
 date=$(date +"%Y-%m-%d-%H%M")
 export ARCH=arm64
 export SUBARCH=arm64
-export zipname="WaybigKernel-sweet-${date}.zip"
+export zipname="OmnitrixKernel-FourArms-OSS-sweet-${date}.zip"
 
 # Tool Chain
 echo -e "$green << cloning gcc from arter >> \n $white"
@@ -21,7 +21,7 @@ export KBUILD_COMPILER_STRING=$("$HOME"/gcc64/bin/aarch64-elf-gcc --version | he
 
 # Clang
 echo -e "$green << cloning clang >> \n $white"
-git clone -b master --single-branch --depth="1" https://github.com/kdrag0n/proton-clang.git "$PWDIR"/../clang
+git clone -b master --single-branch --depth="1" https://gitlab.com/itsshashanksp/android_prebuilts_clang_host_linux-x86_clang-r487747c "$PWDIR"/../clang
 export PATH="$HOME/clang/bin:$PATH"
 export KBUILD_COMPILER_STRING=$("$HOME"/clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
 
