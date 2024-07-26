@@ -2,14 +2,14 @@
 #set -e
 # Clone kernel
 echo -e "$green << cloning kernel >> \n $white"
-git clone --depth=1 https://github.com/omnitrix21/kernel_xiaomi_sm6150 13
+git clone --depth=1 https://github.com/imranpopz/kernel_xiaomi_sm6150 -b imranpopz-patch-2 13
 cd 13
 
-KERNEL_DEFCONFIG=sweet_defconfig
+KERNEL_DEFCONFIG=vendor/sweet_perf_defconfig
 date=$(date +"%Y-%m-%d-%H%M")
 export ARCH=arm64
 export SUBARCH=arm64
-export zipname="OmnitrixKernel-FourArms-OSS-sweet-${date}.zip"
+export zipname="SleepyKernel-KSU-CLO-sweet-${date}.zip"
 
 # Tool Chain
 echo -e "$green << cloning gcc from arter >> \n $white"
@@ -61,7 +61,7 @@ export dtb="$MY_DIR"/out/arch/arm64/boot/dtb.img
 find out/arch/arm64/boot/dts/ -name '*.dtb' -exec cat {} + >out/arch/arm64/boot/dtb
 if [ -f "out/arch/arm64/boot/Image.gz" ] && [ -f "out/arch/arm64/boot/dtbo.img" ] && [ -f "out/arch/arm64/boot/dtb" ]; then
 	echo "------ Finishing  Build ------"
-	git clone -q https://github.com/Sweet-stuff/AnyKernel3
+	git clone -q https://github.com/itsshashanksp/AnyKernel3
 	cp out/arch/arm64/boot/Image.gz AnyKernel3
 	cp out/arch/arm64/boot/dtb AnyKernel3
 	cp out/arch/arm64/boot/dtbo.img AnyKernel3
