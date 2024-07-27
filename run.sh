@@ -21,7 +21,7 @@ export KBUILD_COMPILER_STRING=$("$HOME"/gcc64/bin/aarch64-elf-gcc --version | he
 
 # Clang
 echo -e "$green << cloning clang >> \n $white"
-git clone -b master --single-branch --depth="1" https://gitlab.com/itsshashanksp/android_prebuilts_clang_host_linux-x86_clang-r487747c "$PWDIR"/../clang
+git clone -b master --single-branch --depth="1" https://gitlab.com/itsshashanksp/android_prebuilts_clang_host_linux-x86_clang-r510928.git "$PWDIR"/../clang
 export PATH="$HOME/clang/bin:$PATH"
 export KBUILD_COMPILER_STRING=$("$HOME"/clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
 
